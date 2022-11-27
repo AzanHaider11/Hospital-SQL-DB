@@ -1,0 +1,83 @@
+CREATE TABLE patient(
+	patient_id SMALLINT NOT NULL,
+	patient_name VARCHAR(25),
+	patient_email VARCHAR(50) DEFAULT 'email@email.com',
+	gender CHAR(1),
+  	PRIMARY KEY(patient_id)
+)
+$
+CREATE TABLE employees(
+	employee_id SMALLINT,
+	employee_name VARCHAR(25),
+	employee_email VARCHAR(50) DEFAULT 'email@email.com',
+	gender CHAR(1),
+	PRIMARY KEY (employee_id)
+)
+$ 
+CREATE TABLE departments(
+	employee_id,
+	FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+	department VARCHAR(50)
+)
+$
+CREATE TABLE appointments(
+	patient_id,
+	FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+	start_time TIMESTAMP,
+	end_time  TIMESTAMP
+)
+$
+CREATE TABLE schedule(
+	employee_id,
+	FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+	start_time TIMESTAMP,
+	end_time TIMESTAMP,
+	schedule_date DATE
+)
+$
+CREATE TABLE medical_history(
+	patient_id,
+    FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+   	medication VARCHAR(100),
+   	last_prescribed DATE,
+   	surgery_history VARCHAR(200)
+)
+$
+CREATE TABLE training(
+	employee_id,
+	FOREIGN KEY(employee_id) REFERENCES employees(employee_id),
+	certifications VARCHAR(100),
+	status VARCHAR(20)
+)
+$
+CREATE TABLE certifications(
+	certifications_id INT,
+	description VARCHAR(100),
+	PRIMARY KEY(certifications_id)
+)
+$
+CREATE TABLE priority_patients(
+	patient_id,
+	FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+	status VARCHAR(50),
+	condition VARCHAR(50),
+	DOB DATE,
+	last_checkup DATE
+)
+$
+CREATE TABLE billID(
+	bill_id SMALLINT NOT NULL,
+	patient_id,
+	FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+	PRIMARY KEY (bill_id)
+)
+$
+CREATE TABLE bill(
+	bill_id,
+	FOREIGN KEY (bill_id) REFERENCES billID(bill_id),
+	doctor_charge FLOAT(8),
+	room_charge FLOAT(8),
+	lab_bill FLOAT(8),
+	days_stayed INT
+)
+$

@@ -1,0 +1,11 @@
+DROP TABLE bill
+DROP TABLE billID
+DROP TABLE certifications
+DROP TABLE priority_patients
+DROP TABLE training
+DROP TABLE medical_history
+DROP TABLE schedule
+DROP TABLE appointments
+DROP TABLE departments
+DROP TABLE employees
+DROP TABLE patient
