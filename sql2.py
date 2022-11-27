@@ -105,7 +105,7 @@ FONT = "Helvetica"
 
 cx_Oracle.init_oracle_client(lib_dir="instantclient_19_17")
 
-login = "mahaider/11113855"
+login = "user/pass"
 connection_string = "@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))"
 connection_string = login + connection_string
 conn = cx_Oracle.connect(connection_string)
